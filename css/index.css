@@ -26,6 +26,7 @@ html,body{
 	margin-top: -12.6875rem;
 	left: 50%;
 	margin-left: -12.6875rem;
+	z-index: 10000;
 }
 ul,li{
 	list-style: none;
