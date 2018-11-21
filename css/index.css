@@ -21,6 +21,11 @@ html,body{
 .inner{
 	width: 25.375rem;
 	height: 25.375rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -12.6875rem;
+	left: 50%;
+	margin-left: -12.6875rem;
 }
 ul,li{
 	list-style: none;
@@ -32,11 +37,6 @@ ul,li{
 	height: 25.375rem;
 	display: flex;
 	flex-wrap: wrap;
-	position: absolute;
-	top: 50%;
-	margin-top: -12.6875rem;
-	left: 50%;
-	margin-left: -12.6875rem;
 	justify-content: space-between;
 	align-items: auto;
 }
