@@ -62,6 +62,7 @@
 //      });
 //		$('.cont').html(player)
 		
+
 		var video = document.getElementById('example_video')
 		var timer = setInterval(function(){
 			console.log(video.currentTime)
@@ -73,6 +74,23 @@
 				setTimeout(function(){
 					$('.cont').show();
 					video.play();
+					$('.outer').hide()
+//					if(video.play()){
+//						this._firstFullscreen = true;
+//				        let that = this;
+//				        this.player.on('requestFullScreen',(e)=>{
+//				            if(that._firstFullscreen)
+//				            {
+//				                that.player.cancelFullScreen();
+//				                that._firstFullscreen = false;
+//				            }
+//				            else
+//				            {
+//				                let video=$(that.player.el()).find('video');
+//				                video.addClass('center');
+//				            }
+//				        });
+//					}
 				},1000)
 			}
 		},1000)
