@@ -46,10 +46,11 @@
 		})();
 		
 		var video = document.getElementById('example_video')
-		var n=0;
+//		var n=0;
 		var timer = setInterval(function(){
-			n++;
-			if(n>=10){
+//			n++;
+			console.log(video.currentTime)
+			if(video.currentTime>=10){
 				video.pause();
 				clearInterval(timer)
 				$('.outer').show()
