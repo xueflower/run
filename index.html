@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/video-js.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<title></title>
+	</head>
+	<body>
+		<div class="cont">
+			<video class="video-js vjs-big-play-centered" controls autoplay="autoplay" id="example_video">
+			    <source id="videoMP4" src="https://vjs.zencdn.net/v/oceans.mp4"/>
+			</video>
+		</div>
+		<div class="outer">
+			<div class="inner">
+				<ul class="inner-btn">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/video.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+	<script type="text/javascript">
+		// 移动端响应式匹配
+		(function () {
+			document.addEventListener('DOMContentLoaded', function () {
+				var deviceWidth = document.documentElement.clientWidth;
+				document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
+			   }, false);
+			   
+			window.onresize = function(){
+				var deviceWidth = document.documentElement.clientWidth;
+				document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
+			};
+		})();
+		
+		var video = document.getElementById('example_video')
+		var n=0;
+		var timer = setInterval(function(){
+			n++;
+			if(n>=10){
+				video.pause();
+				clearInterval(timer)
+				$('.outer').show()
+			}
+		},1000)
+	</script>
+</html>
