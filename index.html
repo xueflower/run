@@ -8,11 +8,6 @@
 		<title></title>
 	</head>
 	<body>
-		<div class="cont">
-			<video class="video-js vjs-big-play-centered" controls autoplay="autoplay" id="example_video">
-			    <source id="videoMP4" src="https://vjs.zencdn.net/v/oceans.mp4"/>
-			</video>
-		</div>
 		<div class="outer">
 			<div class="inner">
 				<ul class="inner-btn">
@@ -29,70 +24,5 @@
 			</div>
 		</div>
 	</body>
-	<script src="js/video.min.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
-	<script type="text/javascript">
-		// 移动端响应式匹配
-		(function () {
-			document.addEventListener('DOMContentLoaded', function () {
-				var deviceWidth = document.documentElement.clientWidth;
-				document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
-			   }, false);
-			   
-			window.onresize = function(){
-				var deviceWidth = document.documentElement.clientWidth;
-				document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
-			};
-		})();
-		
-//		var player = new player({
-//          id: 'example_video',
-//          autoplay: true,
-//          isLive:true,
-//          playsinline:true,
-//          controlBarVisibility:'always',
-//          source:"https://vjs.zencdn.net/v/oceans.mp4",
-//          useH5Prism:true,
-//          x5_fullscreen:true, //全屏播放
-//          x5_type:'h5', //声明启用同层H5播放器，支持的值：h5
-//          skinLayout:[
-//           {name:"bigPlayButton", align:"blabs", x:"70", y:"150"},
-//           {name: "H5Loading", align: "cc"}
-//           ]
-//      });
-//		$('.cont').html(player)
-		
-
-		var video = document.getElementById('example_video')
-		var timer = setInterval(function(){
-			console.log(video.currentTime)
-			if(video.currentTime>=10){
-				video.pause();
-				clearInterval(timer)
-				$('.outer').show()
-				$('.cont').hide()
-				setTimeout(function(){
-					$('.cont').show();
-					video.play();
-					$('.outer').hide()
-//					if(video.play()){
-//						this._firstFullscreen = true;
-//				        let that = this;
-//				        this.player.on('requestFullScreen',(e)=>{
-//				            if(that._firstFullscreen)
-//				            {
-//				                that.player.cancelFullScreen();
-//				                that._firstFullscreen = false;
-//				            }
-//				            else
-//				            {
-//				                let video=$(that.player.el()).find('video');
-//				                video.addClass('center');
-//				            }
-//				        });
-//					}
-				},1000)
-			}
-		},1000)
-	</script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
 </html>
