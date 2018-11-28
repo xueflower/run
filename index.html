@@ -8,21 +8,84 @@
 		<title></title>
 	</head>
 	<body>
+		<div class="index-video">
+			<video
+			    id="player1"
+			    class="video-js"
+			    preload="auto"
+			    poster="http://vjs.zencdn.net/v/oceans.png"
+			    width="210px" height="200px">
+			    <source src='http://movie.ks.js.cn/flv/other/1_0.mp4' type='video/mp4'/> 
+			</video>
+		</div>
+		<div class="poster">
+			<img src="img/pos.jpg"/>
+		</div>
+		<div class="intro">
+			<h3></h3>
+		</div>
 		<div class="outer">
 			<div class="inner">
 				<ul class="inner-btn">
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>
-					<li>4</li>
-					<li>5</li>
-					<li>6</li>
-					<li>7</li>
-					<li>8</li>
-					<li>9</li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
+					<li><a href=""></a></li>
 				</ul>
 			</div>
 		</div>
 	</body>
 	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/video.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		get href id 
+		var id = location.search.split('=')[1]; 
+//		console.log(id)
+		var video = document.getElementById('player1')
+		$(function(){
+			$.ajax({
+				type:"post",
+				url:"http://www.cqjunhan.cn/vdo/public/index.php/admin/index/getvideoinfo",
+				async : false, 
+				data:{
+					id:1
+				},
+				success:function(data){
+					console.log(data)
+					if(data.code==0){
+						var myPlayer =  videojs("player1");  //初始化视频
+				        myPlayer.src(data.result.videolink);  //重置video的src
+				        myPlayer.load(data.result.videolink);  //使video重新加载
+						myPlayer.play();
+						$('.intro h3').html(data.result.videointroduce)
+						var timer = setInterval(function(){
+							if(myPlayer.currentTime()>=data.result.pausetime){
+								console.log(myPlayer.currentTime())
+								myPlayer.pause();
+								$('.index-video').hide();
+								$('.outer').show();
+								$('.poster').show();
+								clearInterval(timer);
+							}
+						},1000)
+						for(var i=0;i<data.result.interaction.length;i++){
+							$('.inner li').eq(i).children('a').html(data.result.interaction[i].title).attr('href',data.result.interaction[i].link)
+						}
+					}
+				}
+			});
+		})
+
+
+		
+		$('.inner li').click(function(){
+			console.log($(this).index())
+		})
+	</script>
 </html>

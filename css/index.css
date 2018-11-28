@@ -2,6 +2,10 @@ html,body{
 	padding: 0;
 	margin: 0;
 }
+a{
+	text-decoration: none;
+	color: blue;
+}
 .cont{
 	width: 100%;
 }
@@ -48,5 +52,12 @@ ul,li{
 	background: #73859F;
 	text-align: center;
 	line-height: 8.291666rem;
+}
+.poster{
+	display: none;
+}
+.poster img{
+	width: 31.25rem;
+	height: 17.583333rem;
 }
 
