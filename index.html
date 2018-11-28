@@ -64,6 +64,9 @@
 				        myPlayer.load(data.result.videolink);  //使video重新加载
 						myPlayer.play();
 						$('.intro h3').html(data.result.videointroduce)
+						for(var i=0;i<data.result.interaction.length;i++){
+							$('.inner li').eq(i).children('a').html(data.result.interaction[i].title).attr('href',data.result.interaction[i].link)
+						}
 						var timer = setInterval(function(){
 							if(myPlayer.currentTime()>=data.result.pausetime){
 								console.log(myPlayer.currentTime())
@@ -74,9 +77,6 @@
 								clearInterval(timer);
 							}
 						},1000)
-						for(var i=0;i<data.result.interaction.length;i++){
-							$('.inner li').eq(i).children('a').html(data.result.interaction[i].title).attr('href',data.result.interaction[i].link)
-						}
 					}
 				}
 			});
