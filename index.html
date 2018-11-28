@@ -2,7 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="author" content="Tencent-TGideas">
+	    <meta name="format-detection" content="telephone=no" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<link rel="stylesheet" type="text/css" href="css/video-js.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<title></title>
@@ -13,8 +17,11 @@
 			    id="player1"
 			    class="video-js"
 			    preload="auto"
+			    controls="controls"
 			    poster="http://vjs.zencdn.net/v/oceans.png"
-			    width="210px" height="200px">
+			    width="210px" height="200px"
+			    x5-video-player-type='h5'
+			    x5-video-player-fullscreen='true'>
 			    <source src='http://movie.ks.js.cn/flv/other/1_0.mp4' type='video/mp4'/> 
 			</video>
 		</div>
@@ -44,9 +51,7 @@
 	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/video.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-//		get href id 
 		var id = location.search.split('=')[1]; 
-//		console.log(id)
 		var video = document.getElementById('player1')
 		$(function(){
 			$.ajax({
@@ -70,7 +75,7 @@
 						var timer = setInterval(function(){
 							if(myPlayer.currentTime()>=data.result.pausetime){
 								myPlayer.pause();
-								$('.index-video').hide();
+								$('#player1').hide();
 								$('.outer').show();
 								$('.poster').show();
 								clearInterval(timer);
